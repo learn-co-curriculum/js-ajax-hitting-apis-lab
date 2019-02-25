@@ -42,13 +42,13 @@ function displayCommits() {
   const commits = JSON.parse(this.responseText);
   const commitsList = `<ul>${commits
     .map(
-      commit =>
+      response =>
         '<li><h3>' +
-        commit.commit.author.name +
+        (response.commit.author.name || "Missing commit author name") +
         ' (' +
-        commit.author.login +
+        (response.author.login || "Missing author login") +
         ')</h3>' +
-        commit.commit.message +
+        (response.commit.message || "Missing commit message") +
         '</li>'
     )
     .join('')}</ul>`;
